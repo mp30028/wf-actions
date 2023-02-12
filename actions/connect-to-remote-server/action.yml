@@ -1,0 +1,22 @@
+name: Connect to remote server using the input paramters
+description: Runs a shell script that uses CURL to make an SFTP connection using the details provided as input parameters
+inputs:
+  remote_username:
+    description: 'account username to connect to the remote server '
+    required: true
+    default: dummy_username
+  remote_password:
+    description: 'account password to connect to the remote server'
+    required: true
+    default: dummy_password
+  remote_server:
+    description: 'server to connect to'
+    required: true
+    default: dummy_server
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+  - ${{ inputs.remote_username }}
+  - ${{ inputs.remote_password }}
+  - ${{ inputs.remote_server }}
