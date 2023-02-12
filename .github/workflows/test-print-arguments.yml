@@ -22,7 +22,7 @@ jobs:
 
     steps:
       #  Check out the print-arguments action
-      - uses: actions/print-arguments/checkout@v3
+      - uses: mp30028/wf-actions/actions/print-arguments@main
         with:
           remote_username: $remote_username
           remote_password: $remote_password
