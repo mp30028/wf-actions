@@ -1,0 +1,29 @@
+name: Workflow to test the print-arguments action 
+
+# Controls when the workflow will run
+on:
+
+#  pull_request:
+#    branches: [ "main" ]
+#    types: [opened, synchronize , closed]
+    
+  workflow_dispatch:
+
+# Define some local variables
+env:
+  remote_username: "dummyuser`"
+  remote_password: "dummypassword"
+  remote_server: "dummyserver"
+  
+
+jobs:
+  main-job:
+    runs-on: ubuntu-22.04
+
+    steps:
+      #  Check out the print-arguments action
+      - uses: actions/print-arguments/checkout@v3
+        with:
+          remote_username: $remote_username
+          remote_password: $remote_password
+          remote_server: $remote_server
