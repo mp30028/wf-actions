@@ -32,5 +32,5 @@ jobs:
           remote_host: ${{ secrets.REMOTE_SERVER  }}
           #remote_filepath: ${{ vars.REMOTE_FILEPATH  }}
           remote_filepath: "/installed-apps/tmp"
-          source_filepath: ${{ env.GITHUB_WORKSPACE }}/staging
+          source_filepath: ${{ GITHUB_WORKSPACE }}/staging
           #source_filepath: ${{ vars.SOURCE_FILEPATH  }}
