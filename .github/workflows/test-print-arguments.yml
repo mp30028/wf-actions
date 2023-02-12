@@ -24,6 +24,6 @@ jobs:
       #  Check out the print-arguments action
       - uses: mp30028/wf-actions/actions/print-arguments@main
         with:
-          remote_username: $remote_username
-          remote_password: $remote_password
-          remote_server: $remote_server
+          remote_username: ${{ env.remote_username }}
+          remote_password: ${{ env.remote_password }}
+          remote_server: ${{ env.remote_server }}
