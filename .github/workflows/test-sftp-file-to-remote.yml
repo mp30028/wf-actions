@@ -22,7 +22,7 @@ jobs:
         run: mkdir ./staging
         
       - name: Copy the data to be transferred to staging
-        run: cp ./test-files ./staging/test-files
+        run: cp -r ./test-files ./staging/test-files
       
       #  Check out the sftp-file-to-remote action
       - uses: mp30028/wf-actions/actions/sftp-file-to-remote@main
@@ -30,6 +30,7 @@ jobs:
           remote_username: ${{ secrets.REMOTE_USERNAME  }}
           remote_password: ${{ secrets.REMOTE_PASSWORD  }}
           remote_host: ${{ secrets.REMOTE_SERVER  }}
-          remote_filepath: ${{ vars.REMOTE_FILEPATH  }}
+          #remote_filepath: ${{ vars.REMOTE_FILEPATH  }}
+          remote_filepath: "/installed-apps/tmp"
           source_filepath: $GITHUB_WORKSPACE/staging/
           #source_filepath: ${{ vars.SOURCE_FILEPATH  }}
