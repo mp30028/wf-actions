@@ -1,9 +1,22 @@
 name: Print Arguments
 description: Print arguments passed in at the command line
+inputs:
+  remote_username:
+    description: 'account username to connect to the remote server '
+    required: true
+    default: dummy_username
+  remote_password:
+    description: 'account password to connect to the remote server'
+    required: true
+    default: dummy_password
+  remote_server:
+    description: 'server to connect to'
+    required: true
+    default: dummy_server
 runs:
   using: docker
   image: Dockerfile
   args:
-  - $remote_username
-  - $remote_password
-  - $remote_server
+  - ${{ inputs.remote_username }}
+  - ${{ inputs.remote_password }}
+  - ${{ inputs.remote_server }}
