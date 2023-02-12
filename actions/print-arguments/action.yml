@@ -1,0 +1,9 @@
+name: Print Arguments
+description: Print arguments passed in at the command line
+runs:
+  using: docker
+  image: Dockerfile
+  args:
+  - $remote_username
+  - $remote_password
+  - $remote_server
