@@ -1,0 +1,38 @@
+name: Workflow to test the sftp-file-to-remote action
+
+# Controls when the workflow will run
+on:
+
+#  pull_request:
+#    branches: [ "main" ]
+#    types: [opened, synchronize , closed]
+    
+  workflow_dispatch:
+
+jobs:
+  main-job:
+    runs-on: ubuntu-22.04
+
+    steps:
+      # Checkout the repository this workflow belongs to using a ready made global action called checkout
+      # The repository name is in an env variable called $GITHUB_WORKSPACE which this action uses 
+      - uses: actions/checkout@v3
+      
+      - name: Make staging directory
+        run: mkdir ./staging
+        
+      - name: Copy the data to be transferred to staging
+        run: cp "."${{ vars.SOURCE_FILEPATH  }} ./staging${{ vars.SOURCE_FILEPATH  }}
+        #run: cp ./test-files/mysqldb.zip ./staging/test-files/mysqldb.zip
+      
+      #  Check out the sftp-file-to-remote action
+      - uses: mp30028/wf-actions/actions/curl-file-to-remote@main
+        with:
+          remote_username: ${{ secrets.REMOTE_USERNAME  }}
+          remote_password: ${{ secrets.REMOTE_PASSWORD  }}
+          remote_host: ${{ secrets.REMOTE_SERVER  }}
+          remote_filepath: ${{ vars.REMOTE_FILEPATH  }}
+          source_filepath: ./staging${{ vars.SOURCE_FILEPATH  }}          
+          #remote_filepath: "/installed-apps/tmp/"
+          #source_filepath: "./staging/mysqldb.zip"
+
