@@ -32,7 +32,7 @@ jobs:
           remote_password: ${{ secrets.REMOTE_PASSWORD  }}
           remote_host: ${{ secrets.REMOTE_SERVER  }}
           remote_filepath: ${{ vars.REMOTE_FILEPATH  }}
-          source_filepath: ${{ vars.SOURCE_FILEPATH  }}          
+          source_filepath: .${{ vars.SOURCE_FILEPATH  }}          
           #source_filepath: ./staging${{ vars.SOURCE_FILEPATH  }}          
           #remote_filepath: "/installed-apps/tmp/"
           #source_filepath: "./staging/mysqldb.zip"
