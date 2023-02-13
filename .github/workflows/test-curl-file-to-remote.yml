@@ -22,7 +22,7 @@ jobs:
         run: mkdir ./staging
         
       - name: Copy the data to be transferred to staging
-        run: cp "."${{ vars.SOURCE_FILEPATH  }} ./staging${{ vars.SOURCE_FILEPATH  }}
+        run: cp .${{ vars.SOURCE_FILEPATH  }} ./staging${{ vars.SOURCE_FILEPATH  }}
         #run: cp ./test-files/mysqldb.zip ./staging/test-files/mysqldb.zip
       
       #  Check out the sftp-file-to-remote action
