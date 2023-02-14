@@ -4,32 +4,25 @@ set -eu
 # -e -->  exit on error
 # -u -->  all variables must be set before use instead of being ignored
 
-username=$1
-host=$2
-port=$3
-ssh_private_key=$4
-local_path=$5
-remote_path=$6
-
-#echo $username
-#echo $host
-#echo $port
-#echo $ssh_private_key
-#echo $local_path
-#echo $remote_path
+remote_username=$1
+remote_host=$2
+remote_port=$3
+remote_ssh_key=$4
+local_filepath=$5
+remote_filepath=$6
 
 SSH_PRIVATE_KEY_FILE=./id_rsa
 SFTP_BATCH_FILE=./sftp_batch
 
-printf "%s" "$ssh_private_key" > $SSH_PRIVATE_KEY_FILE
+printf "%s" "$remote_ssh_key" > $SSH_PRIVATE_KEY_FILE
 chmod 600 $SSH_PRIVATE_KEY_FILE
 
 echo 'Starting SFTP...'
-printf "%s" "put -r $local_path $remote_path" > $SFTP_BATCH_FILE
+printf "%s" "put -r $local_filepath $remote_filepath" > $SFTP_BATCH_FILE
 
-ssh -o StrictHostKeyChecking=no -p $port -i $SSH_PRIVATE_KEY_FILE $username@$host mkdir -p $remote_path
+ssh -o StrictHostKeyChecking=no -p $remote_port -i $SSH_PRIVATE_KEY_FILE $remote_username@$remote_host mkdir -p $remote_filepath
 
-sftp -b $SFTP_BATCH_FILE -P $port -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY_FILE $username@$host
+sftp -b $SFTP_BATCH_FILE -P $remote_port -o StrictHostKeyChecking=no -i $SSH_PRIVATE_KEY_FILE $remote_username@$remote_host
 
 rm $SSH_PRIVATE_KEY_FILE
 rm $SFTP_BATCH_FILE
