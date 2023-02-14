@@ -6,4 +6,4 @@ RUN apt -y install openssh-client
 COPY staging /staging
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 0700 /entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+ENTRYPOINT ["entrypoint.sh"]
