@@ -26,6 +26,12 @@ jobs:
         
       - name: Copy data to be transferred to staging
         run: cp -r .${{ vars.SOURCE_FILEPATH  }} ./${{ env.staging_folder }}/${{ vars.SOURCE_FILEPATH  }}
+        
+      - name: List out contents of staging folder
+        run: ls -l ./${{ env.staging_folder }}/${{ vars.SOURCE_FILEPATH  }}
+
+      - name: Show current path
+        run: pwd
 
       
       #  Check out the sftp-folder-to-remote action
