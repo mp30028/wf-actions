@@ -1,4 +1,4 @@
-name: Workflow to test the sftp-file-to-remote action
+name: Workflow to test the sftp-folder-to-remote action
 
 # Controls when the workflow will run
 on:
