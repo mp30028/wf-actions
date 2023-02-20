@@ -22,4 +22,4 @@ jobs:
           remote_host: ${{ secrets.REMOTE_SERVER  }}
           remote_port: ${{ secrets.REMOTE_PORT  }}
           remote_ssh_key: ${{ secrets.REMOTE_SSH_KEY  }}
-          remote_cmd: bash /installed-apps/staging/assets/start_db.sh           
+          remote_cmd: cd /installed-apps/staging/assets; bash ./start_db.sh           
