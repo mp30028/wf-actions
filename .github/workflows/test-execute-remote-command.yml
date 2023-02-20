@@ -1,0 +1,25 @@
+name: Workflow to test execute remote command
+
+on:
+
+#  pull_request:
+#    branches: [ "main" ]
+#    types: [opened, synchronize , closed]
+    
+  workflow_dispatch:
+
+  
+jobs:
+  main-job:
+    runs-on: ubuntu-20.04
+
+    steps:
+      
+      #  Check out the sftp-folder-to-remote action
+      - uses: mp30028/wf-actions/actions/execute-remote-command@main
+        with:
+          remote_username: ${{ secrets.REMOTE_USERNAME  }}
+          remote_host: ${{ secrets.REMOTE_SERVER  }}
+          remote_port: ${{ secrets.REMOTE_PORT  }}
+          remote_ssh_key: ${{ secrets.REMOTE_SSH_KEY  }}
+          remote_cmd: bash /installed-apps/staging/assets/start_db.sh           
