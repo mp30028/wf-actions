@@ -22,4 +22,4 @@ jobs:
           remote_host: ${{ secrets.REMOTE_SERVER  }}
           remote_port: ${{ secrets.REMOTE_PORT  }}
           remote_ssh_key: ${{ secrets.REMOTE_SSH_KEY  }}
-          remote_cmd: cd /installed-apps/persons-api; nohup java -jar persons-api-with-workflow-0.0.1-SNAPSHOT.jar &          
+          remote_cmd: nohup cd /installed-apps/persons-api; java -jar persons-api-with-workflow-0.0.1-SNAPSHOT.jar > logs.out 2> error.out < /dev/null &         
